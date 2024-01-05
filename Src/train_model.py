@@ -1,4 +1,5 @@
 import pandas as pd
+import joblib
 from imblearn.under_sampling import TomekLinks
 from check_iqr import check_iqr
 from sklearn.compose import ColumnTransformer
@@ -41,6 +42,7 @@ for columns in X_column_name:
 # Missing Value Handling
 for column in X_column_name:
     X_train[column] = X_train[column].fillna(X_train[column].median())
+
 
 
 #Feature Selection
@@ -91,4 +93,14 @@ pipe = Pipeline(
     steps=[("preprocessor", feature_preprocessor), ("classifier", best_model)]
 )
 
-pipe.fit(X_balance, y_balance)
+pipe.fit(X_balance, y_balance.values.ravel())
+
+
+
+# Export model
+joblib.dump(pipe, "model.pkl")
+
+y_predict = pipe.predict(X_balance)
+print('This model accuracy towards itself is:')
+
+print((y_predict == y_balance.values.ravel()).sum()/len(y_balance))
