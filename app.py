@@ -8,7 +8,7 @@ from feature_config import used_feature
 app = Flask(__name__)
 
 ## Model Loading
-rfc_model = joblib.load('../Models/model.pkl')
+rfc_model = joblib.load('Models/model.pkl')
 used_column = used_feature
 
 @app.route('/')
