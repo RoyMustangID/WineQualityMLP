@@ -7,6 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from feature_config import used_feature
 
 
 
@@ -14,8 +15,8 @@ from sklearn.preprocessing import StandardScaler
 X_train = pd.read_csv('../Data/Splitted/X_train.csv')
 y_train = pd.read_csv('../Data/Splitted/y_train.csv')
 
-
-# Set outlier limit
+# Handling Outlier
+## Set outlier limit
 X_column_name = X_train.columns.values.tolist()
 upper_limit = []
 lower_limit = []
@@ -31,7 +32,7 @@ upper_outlier[X_column_name.index('volatile_acidity')] = 1
 upper_outlier[X_column_name.index('fixed_acidity')] = 15
 
 
-# Drop outlier
+## Drop outlier
 for columns in X_column_name:
     y_train.drop(X_train[X_train[columns] > upper_outlier[X_column_name.index(columns)]].index, inplace = True)
     X_train.drop(X_train[X_train[columns] > upper_outlier[X_column_name.index(columns)]].index, inplace = True)
@@ -45,17 +46,9 @@ for column in X_column_name:
 
 
 
-#Feature Selection
+# Feature Selection
 
-used_column = ['fixed_acidity',
- 'volatile_acidity',
- 'citric_acid',
- 'residual_sugar',
- 'chlorides',
- 'free_sulfur_dioxide',
- 'pH',
- 'sulphates',
- 'alcohol']
+used_column = used_feature
 
 X_train = X_train[X_train.columns.intersection(used_column)]
 
@@ -66,16 +59,14 @@ X_balance, y_balance = TL.fit_resample(X_train,y_train)
 
 # Pipeline
 
-# Used Model
+## Used Model
 best_model = RandomForestClassifier(criterion = 'gini',
                                     max_depth = 25,
                                     min_samples_leaf = 1,
                                     min_samples_split = 5,
                                     n_estimators = 90)
 
-
-
-# Feature Pipeline
+## Feature Pipeline
 feature_pipeline = Pipeline(
     steps=[
         ("computer", SimpleImputer(strategy='mean')),
@@ -83,12 +74,12 @@ feature_pipeline = Pipeline(
     ]
 )
 
-# Transformer
+## Transformer
 feature_preprocessor = ColumnTransformer(
     transformers=[("num", feature_pipeline, used_column)],
     remainder='drop')
 
-# Pipeline Model
+## Pipeline Model
 pipe = Pipeline(
     steps=[("preprocessor", feature_preprocessor), ("classifier", best_model)]
 )

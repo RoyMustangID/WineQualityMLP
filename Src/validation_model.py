@@ -8,6 +8,7 @@ y_val = pd.read_csv('../Data/Splitted/y_val.csv')
 
 y_val_predict = validation_model.predict(X_val)
 val_score =  (y_val_predict == y_val.values.ravel()).sum()/len(y_val)
-
+print(y_val_predict)
 print('Validation score is:')
 print(val_score)
+
