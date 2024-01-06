@@ -98,7 +98,7 @@ pipe.fit(X_balance, y_balance.values.ravel())
 
 
 # Export model
-joblib.dump(pipe, "model.pkl")
+joblib.dump(pipe, "../Models/model.pkl")
 
 y_predict = pipe.predict(X_balance)
 print('This model accuracy towards itself is:')
