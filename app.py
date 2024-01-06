@@ -24,9 +24,9 @@ def predict():
     print(final_input)
     output=rfc_model.predict(final_input)
     if output == 1:
-        final_output = 'Good'
+        final_output = 'good'
     else:
-        final_output = "Bad"
+        final_output = "bad"
     
 
     return render_template("home.html",prediction_text="The wine is {}".format(final_output))
