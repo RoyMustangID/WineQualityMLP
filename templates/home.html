@@ -19,23 +19,23 @@
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
       <h4>Fixed Acidity (Tartaric Acid) [g/l]</h4>
-      <input type="text" name="fixed_acidity" placeholder="0.0 - 16" required="required" /><br>
+      <input type="text" name="fixed_acidity" placeholder="0.0 - 15" required="required" /><br>
       <h4>Volatile Acidity (Acetic Acid) [g/l]</h4>
-      <input type="text" name="volatile_acidity" placeholder="Volatile Acidity" required="required" /><br>
+      <input type="text" name="volatile_acidity" placeholder="0.0 - 1" required="required" /><br>
       <h4>Citric Acid [g/l]</h4>
-    	<input type="text" name="citric_acid" placeholder="citric_acid" required="required" /><br>
+    	<input type="text" name="citric_acid" placeholder="0.0 - 1" required="required" /><br>
       <h4>Residual Sugar [g/l]</h4>
-      <input type="text" name="residual_sugar" placeholder="residual_sugar" required="required" /><br>
+      <input type="text" name="residual_sugar" placeholder="0 - 75" required="required" /><br>
       <h4>Chlorides (Sodium Chloride) [g/l]</h4>
-      <input type="text" name="chlorides" placeholder="chlorides" required="required" /><br>
+      <input type="text" name="chlorides" placeholder="0.00 - 0.65" required="required" /><br>
       <h4>Free Sulfur Dioxide [mg/l]</h4>
-      <input type="text" name="free_sulfur_dioxide" placeholder="free_sulfur_dioxide" required="required" /><br>
+      <input type="text" name="free_sulfur_dioxide" placeholder="0.00 - 200" required="required" /><br>
       <h4>pH</h4>
       <input type="text" name="pH" placeholder="0 - 14" required="required" /><br>
       <h4>Sulphates (Potassium Sulphate) [g/l]</h4>
-      <input type="text" name="sulphates" placeholder="sulphates" required="required" /><br>
+      <input type="text" name="sulphates" placeholder="0.0 - 2" required="required" /><br>
       <h4>Alcohol [vol%]</h4>
-      <input type="text" name="alcohol" placeholder="alcohol" required="required" /><br>
+      <input type="text" name="alcohol" placeholder="0.0 - 20" required="required" /><br>
       
 
       <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>

@@ -45,7 +45,13 @@ The model can deliver the expedcted results of the project. In the future it wil
 
 
 ## Reference
+
 Data link: https://archive.ics.uci.edu/dataset/186/wine+quality
+
+Content regulation:
+- https://www.oiv.int/standards/international-code-of-oenological-practices/annexes/maximum-acceptable-limits
+- https://grape-to-glass.com/index.php/sulphur-levels-wine/
+- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6195269/
 
 Deployed model: https://winequalityprediction-11c4d5e93f8d.herokuapp.com/
 
